@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>513Waves</title>
+  <link href="favicon.png" rel="icon">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600|Lora:400i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Tinos:400i&amp;subset=greek" rel="stylesheet"> -->
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="fx-input-div-container">
+      <div class="fx-input-div">
+        <div class="fx">f(x)</div>
+        <div class="input-div">
+          <input id="input" class="input" type="text" placeholder="sin(x)" autocomplete="off">
+          <div id="result" class="result"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svg-divs-container-container">
+      <div class="svg-div-container">
+        <div id="svg-1-div" class="svg-div svg-1-div">
+          <svg xmlns="http://www.w3.org/2000/svg"></svg>
+          <div id="reset-button" class="reset-button">
+            <div class="reset-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                <path d="M250,500 C250,362.021 362.021,250 500,250
+                    C637.979,250 750,362.021 750,500 C750,637.979 637.979,750 500,750
+                    C431.011,750 368.511,721.995 323.258,676.742"/>
+                <path d="M144.345,273.423 L250,500 L476.577,394.345"/>
+              </svg>
+            </div>
+          </div>
+          <div id="zoom-out-button" class="zoom-out-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+              <path d="M100,500 H900"/>
+            </svg>
+          </div>
+          <div id="zoom-in-button" class="zoom-in-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+              <path d="M100,500 H900 M500,100 V900"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="svg-div-container">
+        <div id="svg-2-div" class="svg-div svg-2-div">
+          <svg xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+      </div>
+      <div class="svg-div-container">
+        <div id="svg-3-div" class="svg-div svg-3-div">
+          <svg xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-div-container">
+      <div class="button-div">
+        <button id="bwv846-button" class="play-button" type="button">
+          <span class="title">Prelude 1 in C Major</span>
+          <span class="bwv">BWV 846</span>
+        </button>
+        <button id="bwv974-button" class="play-button" type="button">
+          <span class="title">Concerto in D minor</span>
+          <span class="bwv">BWV 974</span>
+        </button>
+        <button id="bwv1068-button" class="play-button" type="button">
+          <span class="title">Air on the G String</span>
+          <span class="bwv">BWV 1068</span>
+        </button>
+        <button id="bwv1007-button" class="play-button" type="button">
+          <span class="title">Cello Suite No. 1</span>
+          <span class="bwv">BWV 1007</span>
+        </button>
+        <button id="bwv1006-button" class="play-button" type="button">
+          <span class="title">Partita No. 3</span>
+          <span class="bwv">BWV 1006</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Copyright 2019 513Waves
+  </footer>
+
+  <div id="overlay-button" class="overlay-button">
+    <svg class="info-icon" xmlns="http://www.w3.org/2000/svg">
+      <text x="20%" y="82%">?</text>
+    </svg>
+    <span class="x-line x-line-1"></span>
+    <span class="x-line x-line-2"></span>
+  </div>
+
+  <div id="overlay" class="overlay">
+    <nav>
+      <div class="nav-item">
+        About
+        <div class="border"></div>
+      </div>
+      <div class="nav-item">
+        Math
+        <div class="border"></div>
+      </div>
+      <div class="nav-item">
+        FAQ
+        <div class="border"></div>
+      </div>
+      <div class="nav-item">
+        Contact
+        <div class="border"></div>
+      </div>
+    </nav>
+
+    <div class="content-div">
+      <div class="content-item-container">
+        <div class="content-item">
+          <h1>What This Is</h1>
+          <p>
+            Have you ever looked at a function graph and thought to yourself, "<span class="italic">man, I wonder what a waveform with that shape would sound like</span>"? No? Oh. Well... I have. That's why I made 513Waves. It's a little Web Application to experiment with the sound of waveforms made from segments of linear functions.
+          </p>
+          <div class="gap"></div>
+
+          <h1>How It Works</h1>
+          <ol>
+            <li>Think of a real valued linear function you want to plot (see <span class="italic">Valid Inputs</span> below)</li>
+            <li>Move and zoom to the desired position on the first graph, and select a segment with the delimiters</li>
+            <li>A waveform is generated from that segment, and 5 cycles of it are displayed on the second graph</li>
+            <li>The third graph shows the frequency spectrum that composes the chosen waveform</li>
+            <li>Select one of the tracks at the bottom to hear what it sounds like</li>
+            <li>Move the delimiters while a track is playing to hear how the sound changes</li>
+            <li>Reset the graph by clicking on the reset button in the top left corner</li>
+          </ol>
+          <div class="gap"></div>
+
+          <h1>Valid Inputs</h1>
+          <p>
+            Valid inputs are a lot of (most?) real valued linear functions, <span class="math-exp">f(x)</span>, from <span class="math-exp">x ∈ ℝ</span> to <span class="math-exp">y ∈ ℝ</span>. See the <span class="italic">Math</span> tab for examples and an overview of the supported expressions.
+          </p>
+          <p>
+            Notice that piecewise-defined functions are supported. To define a subfunction in a certain interval, use the conditional statement syntax (declaration with <span class="math-exp">{</span> and <span class="math-exp">}</span> or the keyword <span class="math-exp">if</span>), followed by the function definition to be evaluated when the condition is true. For example, <span class="math-exp">{x > 0} x^3</span> evaluates to <span class="math-exp">f(x) = x^3</span> for all <span class="math-exp">x</span> greater than <span class="math-exp">0</span>, while <span class="math-exp">f(x)</span> is undefined for all <span class="math-exp">x</span> less than or equal to <span class="math-exp">0</span>.
+          </p>
+          <p>
+            Piecewise-defined functions can have as many subdomains with its respective subfunctions as needed. You can also set a default right at the beginning of the expression for all <span class="math-exp">x</span> that don't have a specific subfunction defined. For instance, <span class="math-exp">x {0 < x < τ} 10sin(x)</span> evaluates to <span class="math-exp">f(x) = 10sin(x)</span> for all <span class="math-exp">x</span> between <span class="math-exp">0</span> and <span class="math-exp">τ (2π)</span>, both not included, and to <span class="math-exp">f(x) = x</span> for all else.
+          </p>
+          <p>
+            If more than one condition is true, only the last one will be taken into account. For example, <span class="math-exp">{x ≥ 0} e^x {x > 1} ln(x)</span> evaluates to <span class="math-exp">f(x) = e^x</span> for all <span class="math-exp">x</span> between <span class="math-exp">0</span> and <span class="math-exp">1</span> (both included), and to <span class="math-exp">f(x) = ln(x)</span> for all <span class="math-exp">x</span> greater than <span class="math-exp">1</span> (exclusive), despite the fact that <span class="math-exp">f(x) = e^x</span> is also defined for all <span class="math-exp">x</span> greater than <span class="math-exp">1</span>.
+          </p>
+          <p>
+            Conditional statements can be as long and have as many conditions as needed (or wanted), and can include mathematical operations and functions. They are evaluated from left to right. They also don't have to include <span class="math-exp">x</span>, even though in that case they would always be either true or false. For instance, <span class="math-exp">{2 < 5/ln(3^2)} </span> is a valid statement that always evaluates to true. <span class="math-exp">{1 ≤ 2 = 3 ≠ 4 > 5}</span> and <span class="math-exp">{x > 0 < acosh(3) > 1}</span> are also valid statements. Notice that the first one is always false, and the second is true for all <span class="math-exp">x</span> greater than <span class="math-exp">0</span>, since <span class="math-exp">0 < acosh(3)</span> is true and <span class="math-exp">acosh(3) > 1</span> is also true. If one of these were false, the entire statement would always be false, regardless of the value of <span class="math-exp">x</span>.
+          </p>
+          <div class="gap"></div>
+
+          <h1>Important</h1>
+          <p>
+            For the sake of transforming segments of linear functions into waveforms, values of <span class="math-exp">f(x)</span> that are not defined for a given <span class="math-exp">x</span> default to <span class="math-exp">0</span>. This is the case when no function is defined for a given <span class="math-exp">x</span>, or when a value is not defined mathematically, like <span class="math-exp">ln(-3)</span> or <span class="math-exp">(-2.5)^e</span>. Furthermore, because the <span class="math-exp">y</span>-axis scales automatically, values of <span class="math-exp">f(x)</span> above <span class="math-exp">1e300</span> are capped, and also default to <span class="math-exp">0</span>. Oh, and discontinuities show up as vertical lines. <span class="shrug">¯\_(ツ)_/¯</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="content-item-container">
+        <div class="content-item">
+          <h1>Examples</h1>
+          <div class="table-container">
+            <table class="table-1">
+              <tr>
+                <td><span class="math-exp">sin(x)</span></td>
+                <td>sine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">2/π · asin(sin(x))</span></td>
+                <td>triangle</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">2/π · -atan(1/tan(x/2))</span></td>
+                <td>sawtooth</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">{sin(x) < 0} -1 {sin(x) ≥ 0} 1</span> </td> <td>square</td>
+              </tr>
+            </table>
+            <table class="table-1">
+              <tr>
+                <td><span class="math-exp">cbrt(x - π)</span></td>
+                <td>custom</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">{sin(x) ≥ 0} sin(3x)</span></td>
+                <td>custom</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">round(x)/ceil(x)</span></td>
+                <td>custom</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">{0 ≤ x ≤ π} sin(x^e) · (π - x)</span></td>
+                <td>custom</td>
+              </tr>
+            </table>
+          </div>
+          <div class="gap"></div>
+
+          <h1>Constants</h1>
+          <div class="table-container">
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">π</span> or <span class="math-exp">pi</span></td>
+                <td><span class="math-exp">3.1415926535</span></td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">τ</span> or <span class="math-exp">tau</span></td>
+                <td><span class="math-exp">2π</span>, <span class="math-exp">6.2831853071</span></td>
+              </tr>
+            </table>
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">e</span></td>
+                <td><span class="math-exp">2.718281828</span></td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">φ</span> or <span class="math-exp">phi</span></td>
+                <td><span class="math-exp">1.6180339887</span></td>
+              </tr>
+            </table>
+          </div>
+          <div class="gap"></div>
+
+          <h1>Operations</h1>
+          <div class="table-container">
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">+</span></td>
+                <td>addition</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">-</span></td>
+                <td>subtraction</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">·</span> or <span class="math-exp">*</span></td>
+                <td>multiplication</td>
+              </tr>
+            </table>
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">/</span></td>
+                <td>division</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">^</span> or <span class="math-exp">··</span> or <span class="math-exp">**</span></td>
+                <td>exponentiation</td>
+              </tr>
+            </table>
+          </div>
+          <div class="gap"></div>
+
+          <h1>Functions</h1>
+          <div class="table-container">
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">abs()</span></td>
+                <td>absolute value</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">round()</span></td>
+                <td>rounded value</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">trunc()</span></td>
+                <td>truncated value</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">floor()</span></td>
+                <td>floored value</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">ceil()</span></td>
+                <td>ceiled value</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">sqrt()</span></td>
+                <td>positive square root</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">cbrt()</span></td>
+                <td>cube root</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">ln()</span></td>
+                <td>natural logarithm</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">log()</span></td>
+                <td>base 10 logarithm</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">log2()</span></td>
+                <td>base 2 logarithm</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">log4.84()</span></td>
+                <td>base 4.84 logarithm</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">logn()</span></td>
+                <td> base n logarithm</td>
+              </tr>
+            </table>
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">sin()</span></td>
+                <td>sine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">asin()</span></td>
+                <td>arcsine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">sinh()</span></td>
+                <td>hyperbolic sine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">asinh()</span></td>
+                <td>hyperbolic arcsine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">cos()</span></td>
+                <td>cosine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">acos()</span></td>
+                <td>arccosine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">cosh()</span></td>
+                <td>hyperbolic cosine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">acosh()</span></td>
+                <td>hyperbolic arccosine</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">tan()</span></td>
+                <td>tangent</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">atan()</span></td>
+                <td>arctangent</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">tanh()</span></td>
+                <td>hyperbolic tangent</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">atanh()</span></td>
+                <td>hyperbolic arctangent</td>
+              </tr>
+            </table>
+          </div>
+          <div class="gap"></div>
+
+          <h1>Conditionals</h1>
+          <div class="table-container">
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">{</span> and <span class="math-exp">}</span> or <span class="math-exp">if</span></td>
+                <td>condition declaration</td>
+              </tr>
+
+              <tr>
+                <td><span class="math-exp">
+                    <</span> </td> <td>less than</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">≤</span> or <span class="math-exp">
+                    <=</span> </td> <td>less than or equal to</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">=</span> or <span class="math-exp">==</span></td>
+                <td>equal to</td>
+              </tr>
+            </table>
+            <table class="table-2">
+              <tr>
+                <td><span class="math-exp">≠</span> or <span class="math-exp">!=</span></td>
+                <td>not equal to</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">></span></td>
+                <td>greater than</td>
+              </tr>
+              <tr>
+                <td><span class="math-exp">≥</span> or <span class="math-exp">>=</span></td>
+                <td>greater than or equal to</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-item-container">
+        <div class="content-item">
+          <h1>What is a waveform?</h1>
+          <p>
+            A waveform describes the shape of an oscillation. Specifically, in acoustics, a waveform describes how pressure oscillates in a sound wave. Sound waves are waves of alternating pressure deviations from the equilibrium pressure that propagate through a transmission medium such as a gas, liquid or solid, causing local regions of compression and rarefaction. These pressure fluctuations can be perceived by the ears. Depending on the shape of this oscillation, i.e. how exactly the pressure oscillates, the timbre (tone color or tone quality) of the sound changes. Therefore, each waveform has a specific timbre, and different waveforms sound differently. For this reason, they play an important role in many synthesizers, as selecting the appropriate waveform is the first step in creating a desired sound.
+          </p>
+          <div class="gap"></div>
+
+          <h1>What does the frequency spectrum show?</h1>
+          <p>
+            The frequency spectrum shows the relative amplitude of the harmonic partials that compose the waveform, on a logarithmic scale. Simplified, all periodic, non-sinusoidal oscillations are, essentially, just a sum of multiple sine (and cosine) waves at different frequencies. These frequencies contain a fundamental, which is the frequency of the original wave, and overtones, which are positive integer multiples of that fundamental. For instance, for a given frequency <span class="math-exp">f</span>, the fundamental will oscillate at <span class="math-exp">1f</span> Hz, and the possible overtones at <span class="math-exp">2f</span> Hz, <span class="math-exp">3f</span> Hz, <span class="math-exp">4f</span> Hz, <span class="math-exp">5f</span> Hz, and so on. The frequency spectrum displays the relative intensity of these frequencies. For example, since a single sine wave is the most basic waveform and has no overtones, only the fundamental frequency will be shown on the graph. In contrast, a square wave is constructed from only odd harmonics, and a sawtooth wave's spectrum contains all the integer harmonics, both odd and even. To see what these spectra look like, try the respective waveforms with the functions shown in the section <span class="italic">Examples</span> on the <span class="italic">Math</span> tab.
+          </p>
+          <div class="gap"></div>
+
+          <h1>What are the tracks?</h1>
+          <p>
+            The looping tracks you can play to hear what the waveform sounds like are little excerpts from pieces from Johann Sebastian Bach. On each button you can see the BWV number (number in the <span class="italic">Bach-Werke-Verzeichnis</span>, lit. Bach Works Catalogue) that identifies the original piece. Depending on your device, you might also see the title. In case you don't, I'll list them here:
+          </p>
+          <ul>
+            <li>BWV 846: Prelude No. 1 in C major (Well-Tempered Clavier, Book 1)</li>
+            <li>BWV 974: Concerto in D minor, after Alessandro Marcello's Oboe Concerto in D minor</li>
+            <li>BWV 1068: Air on the G String (Orchestral Suite No. 3 in D major)</li>
+            <li>BWV 1007: Cello Suite No. 1 in G major</li>
+            <li>BWV 1006: Violin Partita No. 3 in E major</li>
+          </ul>
+          <div class="gap"></div>
+
+          <h1>How do the technical aspects work?</h1>
+          <p>
+            This Web Application runs entirely client-side in the browser, powered by HTML5, CSS3 and vanilla JavaScript. No third-party library or framework was used. Ok, to be 100% honest, there are some Google Fonts. But that's it! When the user inputs an expression, it is parsed with a Recursive Descent Parser, that supports all important mathematical constants, operations and functions. It also supports conditional statements, to allow for piecewise-defined functions. If the expression is valid, the inputted function and a waveform derived from the segment between the delimiters are plotted on dynamically rendered SVG elements. The user can modify the waveform by changing the selected segment on the function graph. It is then analyzed with a Fourier Transform computed with the FFT algorithm. This converts the time domain signal into the frequency domain, and allows to obtain a Fourier Series with n = 513 sine and cosine terms. The frequency spectrum is then plotted from this Fourier Series. A custom synthesizer made with the Web Audio API is responsible for playing the tracks, and the Fourier Series is passed to its oscillator nodes to shape the output according to the waveform.
+          </p>
+          <div class="gap"></div>
+
+          <h1>Why does it not work?</h1>
+          <p>
+            I have no idea. It works on my end. <span class="shrug">¯\_(ツ)_/¯</span> But seriously, it should at least work in up to date Firefox, Safari and Chromium-Based Web Browsers, both desktop and mobile versions. Of course, at some point there could be an update to the Web Audio API that could potentially break the app. If you should be using Internet Explorer, then I... I just can't help you. Also, since this application requires quite a bit of computing power, it doesn't run very smoothly on low-tier devices. So... yeah.
+          </p>
+          <div class="gap"></div>
+
+          <h1>Is the function graph mathematically accurate?</h1>
+          <p>
+            No. It is not. Values that are not defined default to zero, discontinuities are plotted as vertical lines, and the graphs of some functions have a strange behavior. For more information see the section <span class="italic">Important</span> on the <span class="italic">About</span> tab and the questions below.
+          </p>
+          <div class="gap"></div>
+
+          <h1>Why do some functions like <span class="math-exp">f(x) = sin(x)</span> behave strangely when zooming really far out?</h1>
+          <p>
+            Long story short, that's because only a limited number of points is calculated to plot the function, and detail gets lost when zooming out. This is mainly to optimize performance. Either way, if you zoom out far enough for it to become noticeable, the sound you will hear when playing a track will probably not be truthful to the waveform due to aliasing. Look up Nyquist frequency and aliasing in digital signal processing for further information.
+          </p>
+          <div class="gap"></div>
+
+          <h1>Why do functions with vertical asymptotes (like <span class="math-exp">f(x) = 1/x</span> or <span class="math-exp">f(x) = tan(x)</span>) behave strangely?</h1>
+          <p>
+            Two reasons: First, because of the limited amount of points that are computed (see above). And secondly, because the <span class="math-exp">y</span>-axis scales automatically. This leads to vertical asymptotes being capped kind of randomly (and thus unevenly), causing an unpredictable behavior in the scaling of <span class="math-exp">y</span>-axis. One could argue that that is definitely a bug, but... Oh well. <span class="shrug">¯\_(ツ)_/¯</span>
+          </p>
+          <div class="gap"></div>
+
+          <h1>I found a bug, what should I do?</h1>
+          <p>
+            Find a solution too, and then contact me with both. ;)
+          </p>
+        </div>
+      </div>
+
+      <div class="content-item-container">
+        <div class="content-item">
+          <h1>You can contact me at</h1>
+          <h1>513waves@protonmail.com</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/parser.js"></script>
+  <script src="src/graph.js"></script>
+  <script src="src/wave.js"></script>
+  <script src="src/fourier.js"></script>
+  <script src="src/spectrum.js"></script>
+  <script src="src/synth.js"></script>
+  <script src="src/bwv.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
